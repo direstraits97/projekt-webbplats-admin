@@ -1,49 +1,61 @@
+<a routerLink="/home">Tillbaka</a>
 <section>
   <h2>Meny</h2>
   <section>
     <h3>Förrätter</h3>
-    <article>
-      <h4>Titel</h4>
-      <p>Ev. kategori</p>
-      <p>Ev. beskrivning</p>
-      <p>Pris</p>
-      <div class="buttonsalignvertical">
-        <button>Ändra</button>
-        <button>Radera</button>
-      </div>
-    </article>
-    <article>
-      <h4>Titel</h4>
-      <p>Ev. kategori</p>
-      <p>Ev. beskrivning</p>
-      <p>Pris</p>
-      <div class="buttonsalignvertical">
-        <button>Ändra</button>
-        <button>Radera</button>
-      </div>
-    </article>
+    @for (appetizer of manipulatedAppetizers(); track appetizer.id) {
+      <article>
+        <h4>{{ appetizer.name }}</h4>
+        <p>{{ appetizer.description }}</p>
+        <p>{{ appetizer.price }}</p>
+        <div class="buttonsalignvertical">
+          <button>Ändra</button>
+          <button>Radera</button>
+        </div>
+      </article>
+    }
   </section>
   <section>
     <h3>Huvudrätter</h3>
-    <article>
-      <h4>Titel</h4>
-      <p>Ev. kategori</p>
-      <p>Ev. beskrivning</p>
-      <p>Pris</p>
-      <div class="buttonsalignvertical">
-        <button>Ändra</button>
-        <button>Radera</button>
-      </div>
-    </article>
-    <article>
-      <h4>Titel</h4>
-      <p>Ev. kategori</p>
-      <p>Ev. beskrivning</p>
-      <p>Pris</p>
-      <div class="buttonsalignvertical">
-        <button>Ändra</button>
-        <button>Radera</button>
-      </div>
-    </article>
+    @for (mainCourse of manipulatedMainCourses(); track mainCourse.id) {
+      <article>
+        <h4>{{ mainCourse.name }}</h4>
+        <p>{{ mainCourse.description }}</p>
+        <p>{{ mainCourse.price }}</p>
+        <div class="buttonsalignvertical">
+          <button>Ändra</button>
+          <button>Radera</button>
+        </div>
+      </article>
+    }
+  </section>
+  <section>
+    <h3>Desserter</h3>
+    @for (dessert of manipulatedDesserts(); track dessert.id) {
+      <article>
+        <h4>{{ dessert.name }}</h4>
+        <p>{{ dessert.description }}</p>
+        <p>{{ dessert.price }}</p>
+        <div class="buttonsalignvertical">
+          <button>Ändra</button>
+          <button>Radera</button>
+        </div>
+      </article>
+    }
+  </section>
+  <section>
+    <h3>Drycker</h3>
+    @for (drink of manipulatedDrinks(); track drink.id) {
+      <article>
+        <h4>{{ drink.name }}</h4>
+        <p>{{ drink.category }}</p>
+        <p>{{ drink.description }}</p>
+        <p>{{ drink.price }}</p>
+        <div class="buttonsalignvertical">
+          <button>Ändra</button>
+          <button (click)="deleteDrink(drink.id)">Radera</button>
+        </div>
+      </article>
+    }
   </section>
 </section>

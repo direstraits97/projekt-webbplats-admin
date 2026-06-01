@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +13,44 @@ export class MenuService {
   dessertsUrl: string = 'http://localhost:3000/api/desserts';
 
   postDrink(data: any) {
-    return this.http.post(this.drinksUrl, data, {});
+    return this.http.post(this.drinksUrl, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
   }
   postAppetizer(data: any) {
-    return this.http.post(this.appetizersUrl, data, {});
+    return this.http.post(this.appetizersUrl, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
   }
   postMainCourse(data: any) {
-    return this.http.post(this.mainCoursesUrl, data, {});
+    return this.http.post(this.mainCoursesUrl, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
   }
   postDessert(data: any) {
-    return this.http.post(this.dessertsUrl, data, {});
+    return this.http.post(this.dessertsUrl, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
+  getDrink() {
+    const drinks$ = this.http.get(this.drinksUrl);
+    return toSignal(drinks$, { initialValue: [] });
+  }
+  getAppetizer() {
+    const appetizers$ = this.http.get(this.appetizersUrl);
+    return toSignal(appetizers$, { initialValue: [] });
+  }
+  getMainCourse() {
+    const mainCourses$ = this.http.get(this.mainCoursesUrl);
+    return toSignal(mainCourses$, { initialValue: [] });
+  }
+  getDessert() {
+    const desserts$ = this.http.get(this.dessertsUrl);
+    return toSignal(desserts$, { initialValue: [] });
+  }
+  deleteDrink(id: string) {
+    return this.http.delete(this.drinksUrl + '/' + id, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
   }
 }

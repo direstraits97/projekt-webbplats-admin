@@ -1,9 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ManageUser } from '../../services/manage-user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login {}
+export class Login {
+  username: string = '';
+  password: string = '';
+  manageUserService = inject(ManageUser);
+  private router = inject(Router);
+
+  validateUser(e: SubmitEvent) {
+    e.preventDefault();
+
+    let user = {
+      username: this.username,
+      password: this.password,
+    };
+
+    if (user.username === '' || user.password === '') {
+      console.log('Fyll i både namn och lösenord!');
+    } else {
+      this.loginUser(user);
+    }
+  }
+
+  loginUser(user: any) {
+    this.manageUserService.loginUser(user).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: () => {},
+    });
+  }
+}

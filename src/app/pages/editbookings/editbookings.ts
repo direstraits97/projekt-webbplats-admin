@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ManageUser } from '../../services/manage-user';
 
 @Component({
   selector: 'app-editbookings',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './editbookings.html',
   styleUrl: './editbookings.scss',
 })
-export class Editbookings {}
+export class Editbookings {
+  manageUserService = inject(ManageUser);
+
+  constructor() {
+    this.manageUserService.controlAuth();
+  }
+}

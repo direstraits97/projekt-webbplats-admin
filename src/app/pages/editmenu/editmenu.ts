@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ManageUser } from '../../services/manage-user';
 
 @Component({
   selector: 'app-editmenu',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './editmenu.html',
   styleUrl: './editmenu.scss',
 })
-export class Editmenu {}
+export class Editmenu {
+  manageUserService = inject(ManageUser);
+
+  constructor() {
+    this.manageUserService.controlAuth();
+  }
+}

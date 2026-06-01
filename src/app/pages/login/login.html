@@ -1,9 +1,9 @@
-<form>
+<form (submit)="validateUser($event)">
   <label for="username">Användarnamn:</label>
-  <input type="text" id="username" name="username" />
+  <input type="text" id="username" name="username" [(ngModel)]="username" />
   <br />
   <label for="password">Lösenord:</label>
-  <input type="password" id="password" name="password" />
+  <input type="password" id="password" name="password" [(ngModel)]="password" />
   <br />
   <button id="loginbutton">Logga in</button>
 </form>
