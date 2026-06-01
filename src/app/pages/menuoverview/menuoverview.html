@@ -10,7 +10,7 @@
         <p>{{ appetizer.price }}</p>
         <div class="buttonsalignvertical">
           <button>Ändra</button>
-          <button>Radera</button>
+          <button (click)="deleteAppetizer(appetizer.id)">Radera</button>
         </div>
       </article>
     }
@@ -24,7 +24,7 @@
         <p>{{ mainCourse.price }}</p>
         <div class="buttonsalignvertical">
           <button>Ändra</button>
-          <button>Radera</button>
+          <button (click)="deleteMainCourse(mainCourse.id)">Radera</button>
         </div>
       </article>
     }
@@ -38,7 +38,7 @@
         <p>{{ dessert.price }}</p>
         <div class="buttonsalignvertical">
           <button>Ändra</button>
-          <button>Radera</button>
+          <button (click)="deleteDessert(dessert.id)">Radera</button>
         </div>
       </article>
     }

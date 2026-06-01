@@ -39,4 +39,28 @@ export class Menuoverview {
       error: () => {},
     });
   }
+  deleteAppetizer(id: string) {
+    this.menuService.deleteAppetizer(id).subscribe({
+      next: (response) => {
+        this.manipulatedAppetizers.set(response);
+      },
+      error: () => {},
+    });
+  }
+  deleteMainCourse(id: string) {
+    this.menuService.deleteMainCourse(id).subscribe({
+      next: (response) => {
+        this.manipulatedMainCourses.set(response);
+      },
+      error: () => {},
+    });
+  }
+  deleteDessert(id: string) {
+    this.menuService.deleteDessert(id).subscribe({
+      next: (response) => {
+        this.manipulatedDesserts.set(response);
+      },
+      error: () => {},
+    });
+  }
 }

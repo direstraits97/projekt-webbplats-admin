@@ -53,4 +53,19 @@ export class MenuService {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
     });
   }
+  deleteAppetizer(id: string) {
+    return this.http.delete(this.appetizersUrl + '/' + id, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
+  deleteMainCourse(id: string) {
+    return this.http.delete(this.mainCoursesUrl + '/' + id, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
+  deleteDessert(id: string) {
+    return this.http.delete(this.dessertsUrl + '/' + id, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
 }
