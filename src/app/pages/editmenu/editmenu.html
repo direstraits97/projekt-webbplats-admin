@@ -1,30 +1,24 @@
 <h2>Ändra innehåll</h2>
-<form id="editmenu">
-  <label for="type">Typ:*</label>
-  <select id="type" name="type">
-    <option value="appetizers">Förrätt</option>
-    <option value="main_courses">Huvudrätt</option>
-    <option value="desserts">Dessert</option>
-    <option value="drinks">Dryck</option>
-  </select>
-  <br />
+<form id="editmenu" (submit)="collectContent($event)">
   <label for="name">Namn:*</label>
-  <input type="text" id="name" name="name" />
+  <input type="text" id="name" name="name" [(ngModel)]="putObjectName" />
   <br />
-  <label for="category">Kategori:*</label>
-  <select id="category" name="category">
-    <option value="red whine">Rödvin</option>
-    <option value="white whine">Vitt vin</option>
-    <option value="beer">Öl</option>
-    <option value="sparkling whine">Mousserande</option>
-    <option value="alcohol free">Alkoholfritt</option>
-    <option value="coffee/tea">Kaffe/Te</option>
-  </select>
-  <br />
+  @if (type === 'drink') {
+    <label for="category">Kategori:*</label>
+    <select id="category" name="category" [(ngModel)]="putObjectCategory">
+      <option value="red wine">Rödvin</option>
+      <option value="white wine">Vitt vin</option>
+      <option value="beer">Öl</option>
+      <option value="sparkling wine">Mousserande</option>
+      <option value="alcohol free">Alkoholfritt</option>
+      <option value="coffee/tea">Kaffe/Te</option>
+    </select>
+    <br />
+  }
   <label for="description">Beskrivning:*</label>
-  <textarea id="description" name="description"></textarea>
+  <textarea id="description" name="description" [(ngModel)]="putObjectDescription"></textarea>
   <br />
   <label for="price">Pris:*</label>
-  <input type="number" id="price" name="price" />
+  <input type="number" id="price" name="price" [(ngModel)]="putObjectPrice" />
   <button id="editproduct">Ändra</button>
 </form>

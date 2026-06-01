@@ -9,7 +9,7 @@
         <p>{{ appetizer.description }}</p>
         <p>{{ appetizer.price }}</p>
         <div class="buttonsalignvertical">
-          <button>Ändra</button>
+          <button routerLink="/editmenu/appetizer/{{ appetizer.id }}">Ändra</button>
           <button (click)="deleteAppetizer(appetizer.id)">Radera</button>
         </div>
       </article>
@@ -23,7 +23,7 @@
         <p>{{ mainCourse.description }}</p>
         <p>{{ mainCourse.price }}</p>
         <div class="buttonsalignvertical">
-          <button>Ändra</button>
+          <button routerLink="/editmenu/main_course/{{ mainCourse.id }}">Ändra</button>
           <button (click)="deleteMainCourse(mainCourse.id)">Radera</button>
         </div>
       </article>
@@ -37,7 +37,7 @@
         <p>{{ dessert.description }}</p>
         <p>{{ dessert.price }}</p>
         <div class="buttonsalignvertical">
-          <button>Ändra</button>
+          <button routerLink="/editmenu/dessert/{{ dessert.id }}">Ändra</button>
           <button (click)="deleteDessert(dessert.id)">Radera</button>
         </div>
       </article>
@@ -52,7 +52,7 @@
         <p>{{ drink.description }}</p>
         <p>{{ drink.price }}</p>
         <div class="buttonsalignvertical">
-          <button>Ändra</button>
+          <button routerLink="/editmenu/drink/{{ drink.id }}">Ändra</button>
           <button (click)="deleteDrink(drink.id)">Radera</button>
         </div>
       </article>

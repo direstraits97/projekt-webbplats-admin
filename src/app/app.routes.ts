@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'menuoverview', component: Menuoverview },
   { path: 'addtomenu', component: Addtomenu },
-  { path: 'editmenu', component: Editmenu },
+  { path: 'editmenu/:type/:id', component: Editmenu },
   { path: 'bookings', component: Bookings },
   { path: 'editbookings', component: Editbookings },
 ];

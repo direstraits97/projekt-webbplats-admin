@@ -68,4 +68,24 @@ export class MenuService {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
     });
   }
+  putDrink(id: string, data: any) {
+    return this.http.put(this.drinksUrl + '/' + id, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
+  putAppetizer(id: string, data: any) {
+    return this.http.put(this.appetizersUrl + '/' + id, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
+  putMainCourse(id: string, data: any) {
+    return this.http.put(this.mainCoursesUrl + '/' + id, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
+  putDessert(id: string, data: any) {
+    return this.http.put(this.dessertsUrl + '/' + id, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    });
+  }
 }

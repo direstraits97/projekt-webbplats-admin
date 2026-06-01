@@ -57,7 +57,7 @@ export class Addtomenu {
     this.menuService.postDrink(data).subscribe({
       next: () => {},
       error: (err: any) => {
-        if (err.status >= 400 && err.status <= 499) {
+        if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
         console.log(err);
@@ -68,7 +68,7 @@ export class Addtomenu {
     this.menuService.postAppetizer(data).subscribe({
       next: () => {},
       error: (err: any) => {
-        if (err.status >= 400 && err.status <= 499) {
+        if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
         console.log(err);
@@ -79,7 +79,7 @@ export class Addtomenu {
     this.menuService.postMainCourse(data).subscribe({
       next: () => {},
       error: (err: any) => {
-        if (err.status >= 400 && err.status <= 499) {
+        if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
         console.log(err);
@@ -90,7 +90,7 @@ export class Addtomenu {
     this.menuService.postDessert(data).subscribe({
       next: () => {},
       error: (err: any) => {
-        if (err.status >= 400 && err.status <= 499) {
+        if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
         console.log(err);
