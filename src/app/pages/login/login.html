@@ -5,5 +5,11 @@
   <label for="password">Lösenord:</label>
   <input type="password" id="password" name="password" [(ngModel)]="password" />
   <br />
-  <button id="loginbutton">Logga in</button>
+  @if (errorMessage()) {
+    <p class="errormessage">Felaktigt användarnamn eller lösenord!</p>
+  }
+  @if (inputMessage()) {
+    <p class="errormessage">Fyll i både användarnamn och lösenord!</p>
+  }
+  <button id="loginbutton">Logga in<img src="/ikoner/login.svg" alt="" /></button>
 </form>

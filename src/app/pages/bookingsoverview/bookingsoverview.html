@@ -1,0 +1,22 @@
+<div id="backbuttonholder">
+  <a routerLink="/home" class="backbutton"><img src="/ikoner/back.svg" alt="" />Avbryt</a>
+</div>
+<section>
+  <h2>Bokningar</h2>
+  @for (booking of manipulatedBookings(); track booking.id) {
+    <article>
+      <h3>{{ booking.date.replace('T', ' ') }}</h3>
+      <p>{{ booking.name }}</p>
+      <p>{{ booking.phone }}</p>
+      <p>{{ booking.description }}</p>
+      <div class="buttonsalignvertical">
+        <button routerLink="/editbookings/{{ booking.id }}">
+          Ändra<img src="/ikoner/edit.svg" alt="" />
+        </button>
+        <button (click)="deleteBooking(booking.id)">
+          Radera<img src="/ikoner/delete.svg" alt="" />
+        </button>
+      </div>
+    </article>
+  }
+</section>

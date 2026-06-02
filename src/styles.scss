@@ -23,6 +23,9 @@ button {
   height: 40px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 button:hover {
   cursor: pointer;
@@ -60,4 +63,20 @@ form {
 textarea {
   height: 125px;
   font-family: 'Google Sans Flex', sans-serif;
+}
+.errormessage {
+  color: rgb(202, 29, 29);
+  font-weight: bold;
+}
+.backbutton {
+  font-size: 1.2rem;
+  display: flex;
+  width: min-content;
+}
+#backbuttonholder {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2%;
+  padding-bottom: 0;
 }

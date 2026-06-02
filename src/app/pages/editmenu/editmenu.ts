@@ -1,11 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ManageUser } from '../../services/manage-user';
 import { MenuService } from '../../services/menuservice';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-editmenu',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './editmenu.html',
   styleUrl: './editmenu.scss',
 })
@@ -19,13 +19,14 @@ export class Editmenu {
   putObjectDescription: string = '';
   putObjectPrice: string = '';
   router = inject(Router);
+  inputMessage = signal<boolean>(false);
+  inputMessageDrink = signal<boolean>(false);
 
   constructor(private route: ActivatedRoute) {
     this.manageUserService.controlAuth();
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id') || '';
       this.type = params.get('type') || '';
-      console.log(this.id);
     });
   }
   collectContentWithCategory(e: SubmitEvent): void {
@@ -68,7 +69,9 @@ export class Editmenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessageDrink.set(true);
+        }
       },
     });
   }
@@ -81,7 +84,9 @@ export class Editmenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessage.set(true);
+        }
       },
     });
   }
@@ -94,7 +99,9 @@ export class Editmenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessage.set(true);
+        }
       },
     });
   }
@@ -107,7 +114,9 @@ export class Editmenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessage.set(true);
+        }
       },
     });
   }

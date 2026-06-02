@@ -6,6 +6,7 @@ import { Addtomenu } from './pages/addtomenu/addtomenu';
 import { Editmenu } from './pages/editmenu/editmenu';
 import { Bookings } from './pages/bookings/bookings';
 import { Editbookings } from './pages/editbookings/editbookings';
+import { Bookingsoverview } from './pages/bookingsoverview/bookingsoverview';
 
 export const routes: Routes = [
   { path: '', component: Login },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'addtomenu', component: Addtomenu },
   { path: 'editmenu/:type/:id', component: Editmenu },
   { path: 'bookings', component: Bookings },
-  { path: 'editbookings', component: Editbookings },
+  { path: 'editbookings/:id', component: Editbookings },
+  { path: 'bookingsoverview', component: Bookingsoverview },
 ];

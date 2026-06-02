@@ -1,11 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MenuService } from '../../services/menuservice';
 import { ManageUser } from '../../services/manage-user';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-addtomenu',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './addtomenu.html',
   styleUrl: './addtomenu.scss',
 })
@@ -17,6 +18,9 @@ export class Addtomenu {
   type: string = '';
   private menuService = inject(MenuService);
   manageUserService = inject(ManageUser);
+  inputMessage = signal<boolean>(false);
+  inputMessageDrink = signal<boolean>(false);
+  typeMessage = signal<boolean>(false);
 
   constructor() {
     this.manageUserService.controlAuth();
@@ -51,8 +55,12 @@ export class Addtomenu {
     if (this.type === 'drinks') {
       this.collectContentWithCategory(e);
     }
+    if (this.type === '') {
+      this.typeMessage.set(true);
+      this.inputMessageDrink.set(false);
+      this.inputMessage.set(false);
+    }
   }
-
   async addDrink(data: object) {
     this.menuService.postDrink(data).subscribe({
       next: () => {},
@@ -60,7 +68,11 @@ export class Addtomenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessageDrink.set(true);
+          this.inputMessage.set(false);
+          this.typeMessage.set(false);
+        }
       },
     });
   }
@@ -71,7 +83,11 @@ export class Addtomenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessage.set(true);
+          this.inputMessageDrink.set(false);
+          this.typeMessage.set(false);
+        }
       },
     });
   }
@@ -82,7 +98,11 @@ export class Addtomenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessage.set(true);
+          this.inputMessageDrink.set(false);
+          this.typeMessage.set(false);
+        }
       },
     });
   }
@@ -93,7 +113,11 @@ export class Addtomenu {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
         }
-        console.log(err);
+        if ((err.status = 400)) {
+          this.inputMessage.set(true);
+          this.inputMessageDrink.set(false);
+          this.typeMessage.set(false);
+        }
       },
     });
   }

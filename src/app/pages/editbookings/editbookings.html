@@ -1,18 +1,25 @@
+<div id="backbuttonholder">
+  <a routerLink="/bookingsoverview" class="backbutton"
+    ><img src="/ikoner/back.svg" alt="" />Avbryt</a
+  >
+</div>
 <h2>Ändra bokning</h2>
-<form id="editbooking">
+<form id="editbooking" (submit)="collectBooking($event)">
   <label for="guests">Antal gäster:*</label>
-  <input type="number" id="guests" />
+  <input type="number" id="guests" name="guests" [(ngModel)]="numberOfGuests" />
   <br />
-  <label for="date">Tid:</label>
-  <input type="datetime-local" />
+  <label for="date">Tid:*</label>
+  <input type="datetime-local" id="date" name="date" [(ngModel)]="dateAndTime" />
   <br />
   <label for="name">Namn:*</label>
-  <input type="text" id="name" name="name" />
+  <input type="text" id="name" name="name" [(ngModel)]="name" />
   <br />
   <label for="phone">Telefon:*</label>
-  <input type="tel" id="phone" name="phone" />
+  <input type="tel" id="phone" name="phone" [(ngModel)]="phone" />
   <label for="description">Beskrivning:</label>
-  <textarea id="description" name="description"></textarea>
-
-  <button id="editproduct">Ändra</button>
+  <textarea id="description" name="description" [(ngModel)]="description"></textarea>
+  @if (inputMessage()) {
+    <p class="errormessage">Fyll i antal gäster, tid, namn och telefon!</p>
+  }
+  <button id="editproduct">Ändra<img src="/ikoner/check.svg" alt="" /></button>
 </form>

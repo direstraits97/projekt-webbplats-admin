@@ -1,3 +1,6 @@
+<div id="backbuttonholder">
+  <a routerLink="/home" class="backbutton"><img src="/ikoner/back.svg" alt="" />Avbryt</a>
+</div>
 <h2>Lägg till nytt innehåll</h2>
 <form id="newadd" (submit)="collectContent($event)">
   <label for="type">Typ:*</label>
@@ -28,5 +31,14 @@
   <br />
   <label for="price">Pris:*</label>
   <input type="number" id="price" name="price" [(ngModel)]="newObjectPrice" />
-  <button id="addproduct">Lägg till</button>
+  @if (inputMessage()) {
+    <p class="errormessage">Fyll i typ, namn, beskrivning och pris!</p>
+  }
+  @if (inputMessageDrink()) {
+    <p class="errormessage">Fyll i typ, namn, kategori, beskrivning och pris!</p>
+  }
+  @if (typeMessage()) {
+    <p class="errormessage">Du måste välja en typ!</p>
+  }
+  <button id="addproduct">Lägg till<img src="/ikoner/add.svg" alt="" /></button>
 </form>

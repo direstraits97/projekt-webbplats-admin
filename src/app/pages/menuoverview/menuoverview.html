@@ -1,4 +1,6 @@
-<a routerLink="/home">Tillbaka</a>
+<div id="backbuttonholder">
+  <a routerLink="/home" class="backbutton"><img src="/ikoner/back.svg" alt="" />Tillbaka</a>
+</div>
 <section>
   <h2>Meny</h2>
   <section>
@@ -9,8 +11,12 @@
         <p>{{ appetizer.description }}</p>
         <p>{{ appetizer.price }}</p>
         <div class="buttonsalignvertical">
-          <button routerLink="/editmenu/appetizer/{{ appetizer.id }}">Ändra</button>
-          <button (click)="deleteAppetizer(appetizer.id)">Radera</button>
+          <button routerLink="/editmenu/appetizer/{{ appetizer.id }}">
+            Ändra<img src="/ikoner/edit.svg" alt="" />
+          </button>
+          <button (click)="deleteAppetizer(appetizer.id)">
+            Radera<img src="/ikoner/delete.svg" alt="" />
+          </button>
         </div>
       </article>
     }
@@ -23,8 +29,12 @@
         <p>{{ mainCourse.description }}</p>
         <p>{{ mainCourse.price }}</p>
         <div class="buttonsalignvertical">
-          <button routerLink="/editmenu/main_course/{{ mainCourse.id }}">Ändra</button>
-          <button (click)="deleteMainCourse(mainCourse.id)">Radera</button>
+          <button routerLink="/editmenu/main_course/{{ mainCourse.id }}">
+            Ändra<img src="/ikoner/edit.svg" alt="" />
+          </button>
+          <button (click)="deleteMainCourse(mainCourse.id)">
+            Radera<img src="/ikoner/delete.svg" alt="" />
+          </button>
         </div>
       </article>
     }
@@ -37,8 +47,12 @@
         <p>{{ dessert.description }}</p>
         <p>{{ dessert.price }}</p>
         <div class="buttonsalignvertical">
-          <button routerLink="/editmenu/dessert/{{ dessert.id }}">Ändra</button>
-          <button (click)="deleteDessert(dessert.id)">Radera</button>
+          <button routerLink="/editmenu/dessert/{{ dessert.id }}">
+            Ändra<img src="/ikoner/edit.svg" alt="" />
+          </button>
+          <button (click)="deleteDessert(dessert.id)">
+            Radera<img src="/ikoner/delete.svg" alt="" />
+          </button>
         </div>
       </article>
     }
@@ -52,8 +66,12 @@
         <p>{{ drink.description }}</p>
         <p>{{ drink.price }}</p>
         <div class="buttonsalignvertical">
-          <button routerLink="/editmenu/drink/{{ drink.id }}">Ändra</button>
-          <button (click)="deleteDrink(drink.id)">Radera</button>
+          <button routerLink="/editmenu/drink/{{ drink.id }}">
+            Ändra<img src="/ikoner/edit.svg" alt="" />
+          </button>
+          <button (click)="deleteDrink(drink.id)">
+            Radera<img src="/ikoner/delete.svg" alt="" />
+          </button>
         </div>
       </article>
     }
