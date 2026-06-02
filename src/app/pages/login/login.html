@@ -11,5 +11,8 @@
   @if (inputMessage()) {
     <p class="errormessage">Fyll i både användarnamn och lösenord!</p>
   }
+  @if (serverErrorMessage()) {
+    <p class="errormessage">Det går tyvärr inte att logga in just nu, försök igen senare.</p>
+  }
   <button id="loginbutton">Logga in<img src="/ikoner/login.svg" alt="" /></button>
 </form>

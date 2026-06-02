@@ -17,6 +17,7 @@ export class Login {
   private router = inject(Router);
   inputMessage = signal<boolean>(false);
   errorMessage = signal<boolean>(false);
+  serverErrorMessage = signal<boolean>(false);
 
   validateUser(e: SubmitEvent) {
     e.preventDefault();
@@ -29,6 +30,7 @@ export class Login {
     if (user.username === '' || user.password === '') {
       this.inputMessage.set(true);
       this.errorMessage.set(false);
+      this.serverErrorMessage.set(false);
     } else {
       this.loginUser(user);
     }
@@ -43,6 +45,12 @@ export class Login {
         if (err.status >= 400 && err.status <= 499) {
           this.errorMessage.set(true);
           this.inputMessage.set(false);
+          this.serverErrorMessage.set(false);
+        }
+        if (err.status >= 500) {
+          this.serverErrorMessage.set(true);
+          this.inputMessage.set(false);
+          this.errorMessage.set(false);
         }
       },
     });

@@ -21,6 +21,7 @@ export class Editmenu {
   router = inject(Router);
   inputMessage = signal<boolean>(false);
   inputMessageDrink = signal<boolean>(false);
+  serverErrorMessage = signal<boolean>(false);
 
   constructor(private route: ActivatedRoute) {
     this.manageUserService.controlAuth();
@@ -71,6 +72,11 @@ export class Editmenu {
         }
         if ((err.status = 400)) {
           this.inputMessageDrink.set(true);
+          this.serverErrorMessage.set(false);
+        }
+        if (err.status >= 500) {
+          this.serverErrorMessage.set(true);
+          this.inputMessageDrink.set(false);
         }
       },
     });
@@ -86,6 +92,11 @@ export class Editmenu {
         }
         if ((err.status = 400)) {
           this.inputMessage.set(true);
+          this.serverErrorMessage.set(false);
+        }
+        if (err.status >= 500) {
+          this.serverErrorMessage.set(true);
+          this.inputMessage.set(false);
         }
       },
     });
@@ -101,6 +112,11 @@ export class Editmenu {
         }
         if ((err.status = 400)) {
           this.inputMessage.set(true);
+          this.serverErrorMessage.set(false);
+        }
+        if (err.status >= 500) {
+          this.serverErrorMessage.set(true);
+          this.inputMessage.set(false);
         }
       },
     });
@@ -116,6 +132,11 @@ export class Editmenu {
         }
         if ((err.status = 400)) {
           this.inputMessage.set(true);
+          this.serverErrorMessage.set(false);
+        }
+        if (err.status >= 500) {
+          this.serverErrorMessage.set(true);
+          this.inputMessage.set(false);
         }
       },
     });

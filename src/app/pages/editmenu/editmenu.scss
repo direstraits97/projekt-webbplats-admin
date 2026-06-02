@@ -4,3 +4,13 @@ form {
 #editproduct {
   margin-top: 50px;
 }
+@media (max-width: 1024px) {
+  form {
+    width: 70%;
+  }
+}
+@media (max-width: 600px) {
+  form {
+    width: 90%;
+  }
+}

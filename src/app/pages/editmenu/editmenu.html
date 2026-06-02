@@ -29,5 +29,8 @@
   @if (inputMessageDrink()) {
     <p class="errormessage">Fyll i namn, kategori, beskrivning och pris!</p>
   }
+  @if (serverErrorMessage()) {
+    <p class="errormessage">Det går tyvärr inte att lägga till något just nu.</p>
+  }
   <button id="editproduct">Ändra<img src="/ikoner/check.svg" alt="" /></button>
 </form>
