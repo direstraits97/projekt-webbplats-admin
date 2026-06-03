@@ -24,7 +24,7 @@ export class ManageUser {
         localStorage.setItem('admin_token', response.response.token);
       }),
     );
-  } //Post-anrop som tar emot token och lagrar den genom att uppdatera en signal med värdet. Ett interface är nödvändigt för att komma åt token.
+  } //Post-anrop som tar emot token och lagrar den i localStorage. Ett interface är nödvändigt för att komma åt token.
   logOutUser() {
     localStorage.removeItem('admin_token');
     this.router.navigate(['']); //Token förstörs och användaren omdirigeras till startsidan.
