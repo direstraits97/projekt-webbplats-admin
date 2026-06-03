@@ -1,3 +1,8 @@
+/**
+ * Denna fil ger användaren möjlighet att logga ut samt kontrollerar autentisering.
+ * Av: Josefine Backlund
+ */
+
 import { Component, inject } from '@angular/core';
 import { ManageUser } from '../../services/manage-user';
 import { RouterLink } from '@angular/router';

@@ -1,3 +1,7 @@
+/**Denna fil hanterar PUT-anrop för innehållet i menyn.
+ * Av: Josefine Backlund
+ */
+
 import { Component, inject, signal } from '@angular/core';
 import { ManageUser } from '../../services/manage-user';
 import { MenuService } from '../../services/menuservice';
@@ -10,8 +14,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './editmenu.scss',
 })
 export class Editmenu {
+  //Injectar services
   manageUserService = inject(ManageUser);
   menuService = inject(MenuService);
+  //Properties för formulär och id
   id: string = '';
   type: string = '';
   putObjectName: string = '';
@@ -19,6 +25,7 @@ export class Editmenu {
   putObjectDescription: string = '';
   putObjectPrice: string = '';
   router = inject(Router);
+  //Behållare för felmeddelanden
   inputMessage = signal<boolean>(false);
   inputMessageDrink = signal<boolean>(false);
 
@@ -28,7 +35,7 @@ export class Editmenu {
       this.id = params.get('id') || '';
       this.type = params.get('type') || '';
     });
-  }
+  } //id efterfrågas som parameter.
   collectContentWithCategory(e: SubmitEvent): void {
     e.preventDefault();
     let collectedData = {
@@ -38,7 +45,7 @@ export class Editmenu {
       price: this.putObjectPrice,
     };
     this.putDrink(collectedData);
-  }
+  } //Precis som vid post-anropen i addtomenu finns det två olika funktioner som samlar data och sedan skickar vidare data till funktioner som använder service för put.
   collectContent(e: SubmitEvent): void {
     e.preventDefault();
     let collectedData = {

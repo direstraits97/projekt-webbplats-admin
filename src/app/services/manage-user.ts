@@ -1,3 +1,8 @@
+/**
+ * Denna fil hanterar in- och utloggning samt validerar autentisering med get-anrop på skyddade undersidor.
+ * Av: Josefine Backlund
+ */
+
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { tap } from 'rxjs';
@@ -21,10 +26,10 @@ export class ManageUser {
         localStorage.setItem('admin_token', response.response.token);
       }),
     );
-  }
+  } //Post-anrop som tar emot token och lagrar den genom att uppdatera en signal med värdet. Ett interface är nödvändigt för att komma åt token.
   logOutUser() {
     localStorage.removeItem('admin_token');
-    this.router.navigate(['']);
+    this.router.navigate(['']); //Token förstörs och användaren omdirigeras till startsidan.
   }
   async controlAuth() {
     return this.http
@@ -37,5 +42,5 @@ export class ManageUser {
           this.logOutUser();
         },
       });
-  }
+  } //Ett get-anrop till en skyddad route som validerar token. Vid ej lyckat anrop loggas användaren ut.
 }

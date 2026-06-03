@@ -1,3 +1,8 @@
+/**
+ * Denna fil sköter PUT-anrop för bokningar.
+ * Av: Josefine Backlund
+ */
+
 import { Component, inject, signal } from '@angular/core';
 import { ManageUser } from '../../services/manage-user';
 import { Bookingservice } from '../../services/bookingservice';
@@ -26,9 +31,10 @@ export class Editbookings {
     this.manageUserService.controlAuth();
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id') || '';
-    });
+    }); //Med denna funktion kan parametern id hämtas för att användas i adressraden.
   }
 
+  //Denna funktion samlar datat som ska skickas för uppdatering.
   collectBooking(e: SubmitEvent) {
     e.preventDefault();
     console.log(this.name, this.numberOfGuests, this.dateAndTime);
@@ -41,6 +47,7 @@ export class Editbookings {
     };
     this.putBooking(collectedData);
   }
+  //Denna funktion navigerar användaren tillbaka till översikt av bokningar vid lyckat anrop, annars kommer ett felmeddelande om felaktig input/användaren loggas ut vid tokenproblem.
   async putBooking(data: object) {
     this.bookingsService.putBooking(this.id, data).subscribe({
       next: () => {

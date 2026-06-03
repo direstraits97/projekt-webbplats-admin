@@ -1,3 +1,7 @@
+/**Denna fil hanterar CRUD för alla tabeller i menyn.
+ * Av: Josefine Backlund
+ */
+
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -15,7 +19,7 @@ export class MenuService {
   postDrink(data: any) {
     return this.http.post(this.drinksUrl, data, {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
-    });
+    }); //Data skickas till URL:en med token för validering.
   }
   postAppetizer(data: any) {
     return this.http.post(this.appetizersUrl, data, {
@@ -35,6 +39,7 @@ export class MenuService {
   getDrink() {
     const drinks$ = this.http.get(this.drinksUrl);
     return toSignal(drinks$, { initialValue: [] });
+    //En läsbar signal kommer som svar med get-anropet som läser in alla drycker.
   }
   getAppetizer() {
     const appetizers$ = this.http.get(this.appetizersUrl);
@@ -52,7 +57,7 @@ export class MenuService {
     return this.http.delete(this.drinksUrl + '/' + id, {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
     });
-  }
+  } //Ett delete-anrop med id som parameter i adressraden som valideras med token.
   deleteAppetizer(id: string) {
     return this.http.delete(this.appetizersUrl + '/' + id, {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
@@ -72,7 +77,7 @@ export class MenuService {
     return this.http.put(this.drinksUrl + '/' + id, data, {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
     });
-  }
+  } //Ett put-anrop som använder id i adressraden och skickar med data från body. Även detta anrop valideras.
   putAppetizer(id: string, data: any) {
     return this.http.put(this.appetizersUrl + '/' + id, data, {
       headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
