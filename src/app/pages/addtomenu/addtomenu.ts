@@ -7,7 +7,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MenuService } from '../../services/menuservice';
 import { ManageUser } from '../../services/manage-user';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-addtomenu',
@@ -25,6 +25,9 @@ export class Addtomenu {
   private menuService = inject(MenuService);
   private manageUserService = inject(ManageUser);
   //Injectar services för att nyttja dess metoder.
+
+  router = inject(Router);
+
   inputMessage = signal<boolean>(false);
   inputMessageDrink = signal<boolean>(false);
   typeMessage = signal<boolean>(false);
@@ -73,7 +76,9 @@ export class Addtomenu {
   //Nedan funktioner fungerar likadant men till olika tabeller.
   async addDrink(data: object) {
     this.menuService.postDrink(data).subscribe({
-      next: () => {},
+      next: () => {
+        this.router.navigate(['/menuoverview']);
+      },
       error: (err: any) => {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser(); //Från 401 till 499 loggas användaren ut då token gått ut eller är ogitlig.
@@ -88,7 +93,9 @@ export class Addtomenu {
   }
   async addAppetizer(data: object) {
     this.menuService.postAppetizer(data).subscribe({
-      next: () => {},
+      next: () => {
+        this.router.navigate(['/menuoverview']);
+      },
       error: (err: any) => {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
@@ -103,7 +110,9 @@ export class Addtomenu {
   }
   async addMainCourse(data: object) {
     this.menuService.postMainCourse(data).subscribe({
-      next: () => {},
+      next: () => {
+        this.router.navigate(['/menuoverview']);
+      },
       error: (err: any) => {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
@@ -118,7 +127,9 @@ export class Addtomenu {
   }
   async addDessert(data: object) {
     this.menuService.postDessert(data).subscribe({
-      next: () => {},
+      next: () => {
+        this.router.navigate(['/menuoverview']);
+      },
       error: (err: any) => {
         if (err.status > 400 && err.status <= 499) {
           this.manageUserService.logOutUser();
