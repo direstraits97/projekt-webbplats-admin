@@ -1,0 +1,33 @@
+<div id="backbuttonholder">
+  <a routerLink="/menuoverview" class="backbutton"><img src="/ikoner/back.svg" alt="" />Avbryt</a>
+</div>
+<h2>Ändra innehåll</h2>
+<form id="editmenu" (submit)="collectContent($event)">
+  <label for="name">Namn:*</label>
+  <input type="text" id="name" name="name" [(ngModel)]="putObjectName" />
+  <br />
+  @if (type === 'drink') {
+    <label for="category">Kategori:*</label>
+    <select id="category" name="category" [(ngModel)]="putObjectCategory">
+      <option value="red wine">Rödvin</option>
+      <option value="white wine">Vitt vin</option>
+      <option value="beer">Öl</option>
+      <option value="sparkling wine">Mousserande</option>
+      <option value="alcohol free">Alkoholfritt</option>
+      <option value="coffee/tea">Kaffe/Te</option>
+    </select>
+    <br />
+  }
+  <label for="description">Beskrivning:*</label>
+  <textarea id="description" name="description" [(ngModel)]="putObjectDescription"></textarea>
+  <br />
+  <label for="price">Pris:*</label>
+  <input type="number" id="price" name="price" [(ngModel)]="putObjectPrice" />
+  @if (inputMessage()) {
+    <p class="errormessage">Fyll i namn, beskrivning och pris!</p>
+  }
+  @if (inputMessageDrink()) {
+    <p class="errormessage">Fyll i namn, kategori, beskrivning och pris!</p>
+  }
+  <button id="editproduct">Ändra<img src="/ikoner/check.svg" alt="" /></button>
+</form>

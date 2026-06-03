@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  background-color: #262626;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 2.5%;
+  padding-top: 2.5%;
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    img {
+      width: 120px;
+      height: 120px;
+    }
+    font-size: 0.7rem;
+  }
+}
